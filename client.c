@@ -33,7 +33,7 @@ void	send_bit(char bit, pid_t receiver_pid)
 	else
 		res = kill(receiver_pid, SIGUSR2);
 
-	usleep(100);
+	usleep(1000);
 }
 
 void	send_message(char *msg, pid_t receiver_pid)
@@ -47,7 +47,7 @@ void	send_message(char *msg, pid_t receiver_pid)
 		while (i < 8)
 		{
 			send_bit(c % 2, receiver_pid);
-			c /= 2;
+			c >>= 1;
 			i++;
 		}
 		++msg;
